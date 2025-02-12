@@ -47,12 +47,13 @@ where $W(1) = 1$.
 |  5000 |         8191 |         5823.326 |        61728 |
 | 10000 |        16383 |        11655.862 |       133456 |
 
-
 - [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `test_compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer. 
 
 **Case 1**
 
 $c < \log_b a$
+
+Expected Complexity: $W(n) = O(n^{\log_b a})$
 
 work_fn1 = lambda n: work_calc(n, 2, 2, lambda x: x)
 
@@ -73,6 +74,8 @@ work_fn2 = lambda n: work_calc(n,2, 2, lambda x: x ** 0.5)
 
 $c > \log_b a$
 
+Expected Complexity: $W(n) = O(n^c)$
+
 work_fn1 = lambda n: work_calc(n, 2, 2, lambda x: x)
 
 work_fn2 = lambda n: work_calc(n, 2, 2, lambda x: x ** 2)
@@ -90,6 +93,8 @@ work_fn2 = lambda n: work_calc(n, 2, 2, lambda x: x ** 2)
 **Case 3**
 
 $c = \log_b a$
+
+Expected Complexity: $O(n^c\log n)$
 
 work_fn1 = lambda n: work_calc(n, 2, 2, lambda x: x)
 
@@ -140,6 +145,6 @@ span_fn2 = lambda n: span_calc(n, 3, 2, lambda x: math.log(x))
 |  5000 |    13 | 56.944 |
 | 10000 |    14 | 66.154 |
 
-The complexity of this case will be 
+
 
 
